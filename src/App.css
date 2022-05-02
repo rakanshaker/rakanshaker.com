@@ -1,38 +1,203 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:bold');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:regular');
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  margin: 0 10% 0 10%;
+  height: 100vh;
+}
+
+p {
+  font-family: 'Fira Sans';
+  font-size: 4rem;
+  margin: 0;
+}
+
+
+.leftSide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-right: solid grey 1px;
+  padding: 1rem;
+}
+
+.engineer{
+  font-family: 'PT Serif';
+  font-size: 2rem;
+  padding: .5rem
+}
+
+button {
+  border-radius: 2px;
+  border: none;
   color: white;
+  background-color:darksalmon;
+  padding: .5rem;
+  transition: opacity .2s ease, tranform .2s ease;
+  font-size: 2vh;
+
+}
+button:hover {
+  opacity: .7;
 }
 
-.App-link {
-  color: #61dafb;
+button:active {
+  transform: scale(.98);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.rightSide {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
+.avatarImage {
+  height: 20rem
+}
+
+/* body {
+   background-color:ghostwhite
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10% 0 10%;
+  height: 100vh;
+}
+
+.emoji {
+  display: inline-block;
+  transition: transform .2s ease-in-out;
+  font-size: 2vw;
+}
+
+.emoji:hover {
+  transform: scale(2) translatey(-20px);
+}
+
+.wave {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;        
+  animation-iteration-count: infinite;  
+  transform-origin: 70% 70%;      
+}
+
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+   10% { transform: rotate(14.0deg) scale(1.5) translateY(-1em) } 
+   20% { transform: rotate(-8.0deg) scale(1.5) translateY(-1em) }
+   30% { transform: rotate(14.0deg) scale(1.5) translateY(-1em) }
+   40% { transform: rotate(-4.0deg) scale(1.5) translateY(-1em) }
+   50% { transform: rotate(10.0deg) scale(1.5) translateY(-1em) }
+   60% { transform: rotate( 0.0deg) }  
+  100% { transform: rotate( 0.0deg) }
+}
+
+.wave:before {
+  content: '👋';
+}
+
+p {
+  font-family: 'Fira Sans';
+  font-size: 2vw;
+}
+
+a {
+  font-family: 'PT Serif';
+}
+
+a:link {
+  font-family: 'PT Serif';
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  font-family: 'PT Serif';
+  color: black;
+  text-decoration: none;
+}
+
+.facePeek {
+    position: absolute;
+    z-index: -1;
+    width: 10rem;
+    left: 18rem;
+}
+
+.faceSpan {
+  background-image: url(Rakan_face_website@0.75x.png);
+  background-position: center;
+  width: 10rem;
+}
+
+.tech {
+  font-family: 'PT Serif';
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;  
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0s;
+}
+
+.eab {
+
+}
+
+.brooklyn {
+  font-family: 'PT Serif';
+  color: black;
+  text-decoration: none;
+  cursor: default;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  opacity: 0;
+  width: 120px;
+  color: #fff;
+  text-align: center;
+  transition: opacity 0.5s ease-in;  
+
+  /* Position the tooltip 
+  position: absolute;
+  right: 100%;
+  bottom:100%;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 100;
+}
+
+.TheBeginning {
+  background-color: blanchedalmond;
+}
+
+.TheMiddle {
+  background-color: cornflowerblue;
+} */
+
