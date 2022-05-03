@@ -24,7 +24,9 @@ const App = () => {
             <p className='engineer'>Front End Engineer</p>
           </div>
           <div>
-          <a href={CV} download><button className='leftSide__cvButton'>Download My CV</button></a>
+            <div className='leftSide__cvButton'>
+            <a href={CV} download><button>Download My CV</button></a>
+            </div>
           </div>
         </div>
         <div className='rightSide'>
