@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import CV from '../src/headshot_nobg.png'
 import avatarLookingDown from '../src/rakan_8bit_looking_down.svg'
