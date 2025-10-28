@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import CV from '../src/Rakan-Shaker-Software Engineer-2025.pdf'
 import avatarLookingDown from '../src/rakan_8bit_looking_down.svg'
