@@ -4,11 +4,13 @@ import CV from '../src/Rakan-Shaker-Software Engineer-2025.pdf'
 import avatarLookingDown from '../src/rakan_8bit_looking_down.svg'
 import avatarEyesClosed from '../src/rakan_8bit_eyes_closed.svg'
 
-const handleBlink = (setState, state) => {
-  setTimeout(() => {
-    setState(!state)
-  }, state ? 250 : 4000);
-};
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setIsBlinking(prev => !prev);
+  }, isBlinking ? 250 : 4000);
+
+  return () => clearTimeout(timeout);
+}, [isBlinking]);
 
 const App = () => {
 
