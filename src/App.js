@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import CV from '../src/20210401_RAKANSHAKER_RESUME.pdf'
+import CV from '../src/Rakan-Shaker-Software Engineer-2025.pdf'
 import avatarLookingDown from '../src/rakan_8bit_looking_down.svg'
 import avatarEyesClosed from '../src/rakan_8bit_eyes_closed.svg'
 
