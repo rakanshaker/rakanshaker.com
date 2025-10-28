@@ -21,7 +21,7 @@ const App = () => {
         <div className='leftSide'>
           <div className='titleContainer'>
             <p className='rakanshaker'>Rakan Shaker</p>
-            <p className='engineer'>Front End Engineer</p>
+            <p className='engineer'>Full Stack Engineer</p>
           </div>
           <div>
             <div className='leftSide__cvButton'>
