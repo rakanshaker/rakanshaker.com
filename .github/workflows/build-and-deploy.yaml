@@ -2,7 +2,12 @@
 name: Build and Deploy React App to CloudFront
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build-and-deploy:
     name: Build and Deploy
@@ -14,34 +19,29 @@ jobs:
       DIST_ID: E2STBJ7I9UYR5T
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.REGION }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::425775420354:role/github-to-aws-oidc
+          aws-region: us-east-1
 
-    # - uses: actions/setup-node@v2
-    #   with:
-    #     node-version: '14'
+      - name: Install Dependencies
+        run: |
+          node --version
+          npm ci --production
 
-    - name: Install Dependencies
-      run: |
-        node --version
-        npm ci --production
+      - name: Build Static Website
+        run: npm run build
 
-    - name: Build Static Website
-      run: npm run build
+      - name: Sync files to the production website with the AWS CLI
+        run: |
+          aws s3 sync --delete ${{ env.DIST }} s3://${{ env.BUCKET }}
 
-    - name: Copy files to the production website with the AWS CLI
-      run: |
-        aws s3 sync --delete ${{ env.DIST }} s3://${{ env.BUCKET }}
-
-    - name: Copy files to the production website with the AWS CLI
-      run: |
-        aws cloudfront create-invalidation \
-          --distribution-id ${{ env.DIST_ID }} \
-          --paths "/*"
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ env.DIST_ID }} \
+            --paths "/*"
