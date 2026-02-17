@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import './GamerAvatar.css';
 
 const GamerCanvas = ({ mousePos = { x: 0, y: 0 }, isBlinking = false }) => {
@@ -6,34 +6,7 @@ const GamerCanvas = ({ mousePos = { x: 0, y: 0 }, isBlinking = false }) => {
     const imageRef = useRef(null);
     const [loaded, setLoaded] = useState(false);
 
-    useEffect(() => {
-        const img = new Image();
-        // In React, we usually use process.env.PUBLIC_URL or relative to the component
-        // Assuming the file is in src, it will be moved during build.
-        // However, for local dev, we can try importing it.
-        img.src = require('../rakan_8bit_computer.png');
-        img.onload = () => {
-            imageRef.current = img;
-            setLoaded(true);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (loaded && canvasRef.current && imageRef.current) {
-            const canvas = canvasRef.current;
-            canvas.width = imageRef.current.naturalWidth || 701;
-            canvas.height = imageRef.current.naturalHeight || 989;
-            draw();
-        }
-    }, [loaded]);
-
-    useEffect(() => {
-        if (loaded) {
-            draw();
-        }
-    }, [mousePos, isBlinking]);
-
-    const draw = () => {
+    const draw = useCallback(() => {
         const canvas = canvasRef.current;
         if (!canvas || !imageRef.current) return;
         const ctx = canvas.getContext('2d');
@@ -107,7 +80,31 @@ const GamerCanvas = ({ mousePos = { x: 0, y: 0 }, isBlinking = false }) => {
 
         drawEye(leftEye);
         drawEye(rightEye);
-    };
+    }, [mousePos, isBlinking]);
+
+    useEffect(() => {
+        const img = new Image();
+        img.src = require('../rakan_8bit_computer.png');
+        img.onload = () => {
+            imageRef.current = img;
+            setLoaded(true);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (loaded && canvasRef.current && imageRef.current) {
+            const canvas = canvasRef.current;
+            canvas.width = imageRef.current.naturalWidth || 701;
+            canvas.height = imageRef.current.naturalHeight || 989;
+            draw();
+        }
+    }, [loaded, draw]);
+
+    useEffect(() => {
+        if (loaded) {
+            draw();
+        }
+    }, [loaded, draw]);
 
     return (
         <div className="canvas-avatar-container">
