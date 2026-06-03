@@ -1,25 +1,22 @@
-import './App.css';
-import CV from './Rakan Shaker Software Engineer 2026.pdf'
-import GamerAvatar from './components/GamerAvatar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PortfolioPage from './pages/PortfolioPage';
+
+const isPortfolioHost = () =>
+  window.location.hostname.startsWith('portfolio.');
 
 const App = () => {
+  if (isPortfolioHost()) {
+    return <PortfolioPage />;
+  }
+
   return (
-    <div className='App'>
-      <div className='leftSide'>
-        <div className='titleContainer'>
-          <p className='rakanshaker'>Rakan Shaker</p>
-          <p className='engineer'>Full Stack Engineer</p>
-        </div>
-        <div>
-          <div className='leftSide__cvButton'>
-            <a href={CV} download="Rakan_Shaker_CV.pdf"><button>Download My CV</button></a>
-          </div>
-        </div>
-      </div>
-      <div className='rightSide'>
-        <GamerAvatar className="avatarImage" />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -39,6 +39,24 @@ p {
   animation-fill-mode: forwards;
 }
 
+.leftSide__portfolioLink {
+  animation: titleContainer 200ms ease-in 350ms;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  margin-top: 1rem;
+}
+
+.leftSide__portfolioLink a {
+  font-family: 'PT Serif', serif;
+  font-size: 1.1rem;
+  color: #666;
+  text-decoration: none;
+}
+
+.leftSide__portfolioLink a:hover {
+  color: darksalmon;
+}
+
 .engineer {
   font-family: 'PT Serif';
   font-size: 2rem;
