@@ -68,19 +68,29 @@ const PortfolioPage = () => {
 
         {error === 'fetch-failed' && (
           <p className="gallery-status gallery-status--error">
-            Could not load photos. Check your Sanity project ID, dataset, and
-            CORS settings.
-            {process.env.NODE_ENV === 'development' && errorDetail && (
+            Could not load photos. In{' '}
+            <a
+              href="https://www.sanity.io/manage/project/fnbgcar3/api"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sanity → API → CORS origins
+            </a>
+            , add this exact origin (credentials <strong>off</strong>):{' '}
+            <code>{window.location.origin}</code>
+            . If visitors use both www and non-www, add both origins.
+            {errorDetail && (
               <>
                 <br />
                 <small>{errorDetail}</small>
               </>
             )}
-            <br />
-            <small>
-              In Sanity → API → CORS, add <code>http://localhost:3000</code>{' '}
-              (and your production URLs). Then restart <code>npm start</code>.
-            </small>
+            {process.env.NODE_ENV === 'development' && (
+              <>
+                <br />
+                <small>After saving CORS, restart npm start.</small>
+              </>
+            )}
           </p>
         )}
 
