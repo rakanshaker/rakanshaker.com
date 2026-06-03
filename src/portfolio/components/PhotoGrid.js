@@ -12,13 +12,14 @@ const PhotoGrid = ({ photos, onSelect }) => {
   if (photos.length === 0) {
     return (
       <p className="gallery-empty">
-        No photos yet. In a second terminal, run{' '}
-        <code>cd studio</code> then <code>npm run dev</code>, open{' '}
+        No photos yet. In Studio, create <strong>Photo upload (multiple)</strong>{' '}
+        and drag files onto the Photos field, or add a single <strong>Photo</strong>,
+        then publish. Run <code>cd studio</code> and <code>npm run dev</code> if
+        needed (
         <a href="http://localhost:3333" target="_blank" rel="noopener noreferrer">
           localhost:3333
         </a>
-        , create <strong>Photo</strong> documents, and publish them. Refresh this
-        page.
+        ).
       </p>
     );
   }

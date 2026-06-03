@@ -1,6 +1,9 @@
 # Sanity Studio — Photography
 
-CMS for the photography portfolio. Manages **Photo** documents (image, alt text, caption, display order).
+CMS for the photography portfolio.
+
+- **Photo upload (multiple)** — drag many files onto the Photos field, or multi-select in Upload; fill alt text on each image after.
+- **Photo** — one image per document (fine for a single shot).
 
 ## Quick start
 
