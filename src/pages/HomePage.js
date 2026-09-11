@@ -18,7 +18,7 @@ const HomePage = () => {
             </a>
           </div>
           <div className="leftSide__portfolioLink">
-            <Link to="/portfolio">Rakan Shaker Creative</Link>
+            <Link to="/portfolio">Creative Work</Link>
           </div>
         </div>
       </div>
