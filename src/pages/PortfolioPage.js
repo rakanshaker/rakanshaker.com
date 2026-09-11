@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import PhotoGrid from '../portfolio/components/PhotoGrid';
-import Lightbox from '../portfolio/components/Lightbox';
-import { fetchPhotos, isSanityConfigured } from '../portfolio/lib/sanity';
-import '../portfolio/Portfolio.css';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import PhotoGrid from "../portfolio/components/PhotoGrid";
+import Lightbox from "../portfolio/components/Lightbox";
+import { fetchPhotos, isSanityConfigured } from "../portfolio/lib/sanity";
+import "../portfolio/Portfolio.css";
 
 const PortfolioPage = () => {
   const [photos, setPhotos] = useState([]);
@@ -18,7 +18,7 @@ const PortfolioPage = () => {
     async function load() {
       if (!isSanityConfigured) {
         setLoading(false);
-        setError('missing-config');
+        setError("missing-config");
         return;
       }
 
@@ -29,7 +29,7 @@ const PortfolioPage = () => {
         }
       } catch (err) {
         if (!cancelled) {
-          setError('fetch-failed');
+          setError("fetch-failed");
           setErrorDetail(err?.message || String(err));
           console.error(err);
         }
@@ -50,7 +50,7 @@ const PortfolioPage = () => {
     <div className="portfolio">
       <header className="portfolio-header">
         <h1>Rakan Shaker</h1>
-        <p>Photography</p>
+        <p>Creative</p>
         <Link className="portfolio-header__link" to="/">
           rakanshaker.com
         </Link>
@@ -59,16 +59,16 @@ const PortfolioPage = () => {
       <main className="portfolio-main">
         {loading && <p className="gallery-status">Loading…</p>}
 
-        {error === 'missing-config' && (
+        {error === "missing-config" && (
           <p className="gallery-status gallery-status--error">
-            Set <code>REACT_APP_SANITY_PROJECT_ID</code> in <code>.env</code>{' '}
-            to connect Sanity. See <code>studio/README.md</code>.
+            Set <code>REACT_APP_SANITY_PROJECT_ID</code> in <code>.env</code> to
+            connect Sanity. See <code>studio/README.md</code>.
           </p>
         )}
 
-        {error === 'fetch-failed' && (
+        {error === "fetch-failed" && (
           <p className="gallery-status gallery-status--error">
-            Could not load photos. In{' '}
+            Could not load photos. In{" "}
             <a
               href="https://www.sanity.io/manage/project/fnbgcar3/api"
               target="_blank"
@@ -76,16 +76,16 @@ const PortfolioPage = () => {
             >
               Sanity → API → CORS origins
             </a>
-            , add this exact origin (credentials <strong>off</strong>):{' '}
-            <code>{window.location.origin}</code>
-            . If visitors use both www and non-www, add both origins.
+            , add this exact origin (credentials <strong>off</strong>):{" "}
+            <code>{window.location.origin}</code>. If visitors use both www and
+            non-www, add both origins.
             {errorDetail && (
               <>
                 <br />
                 <small>{errorDetail}</small>
               </>
             )}
-            {process.env.NODE_ENV === 'development' && (
+            {process.env.NODE_ENV === "development" && (
               <>
                 <br />
                 <small>After saving CORS, restart npm start.</small>

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import '../App.css';
-import CV from '../Rakan Shaker Software Engineer 2026.pdf';
-import GamerAvatar from '../components/GamerAvatar';
+import { Link } from "react-router-dom";
+import "../App.css";
+import CV from "../Rakan Shaker Software Engineer 2026.pdf";
+import GamerAvatar from "../components/GamerAvatar";
 
 const HomePage = () => {
   return (
@@ -18,7 +18,7 @@ const HomePage = () => {
             </a>
           </div>
           <div className="leftSide__portfolioLink">
-            <Link to="/portfolio">Photography</Link>
+            <Link to="/portfolio">Rakan Shaker Creative</Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
-# Sanity Studio — Photography
+# Sanity Studio — Creative
 
-CMS for the photography portfolio.
+CMS for the creative portfolio.
 
 - **Photo upload (multiple)** — drag many files onto the Photos field, or multi-select in Upload; fill alt text on each image after.
 - **Photo** — one image per document (fine for a single shot).

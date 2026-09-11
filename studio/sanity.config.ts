@@ -8,7 +8,7 @@ const dataset = process.env.SANITY_STUDIO_DATASET || 'production';
 
 export default defineConfig({
   name: 'rakanshaker-portfolio',
-  title: 'Rakan Shaker — Photography',
+  title: 'Rakan Shaker — Creative',
   projectId,
   dataset,
   plugins: [structureTool(), visionTool()],
