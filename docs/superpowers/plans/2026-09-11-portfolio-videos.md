@@ -178,8 +178,10 @@ test('resolves with the parsed oEmbed JSON on success', async () => {
 test('caches results so a second call for the same URL does not refetch', async () => {
   mockFetchOnce(true, OK_RESPONSE);
 
-  await fetchVimeoOembed('https://vimeo.com/123456789');
-  await fetchVimeoOembed('https://vimeo.com/123456789');
+  // Uses a URL not used by other tests in this file — the module-level cache
+  // in vimeo.js persists across tests, so reusing a URL would collide.
+  await fetchVimeoOembed('https://vimeo.com/555555555');
+  await fetchVimeoOembed('https://vimeo.com/555555555');
 
   expect(global.fetch).toHaveBeenCalledTimes(1);
 });
