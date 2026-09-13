@@ -61,6 +61,21 @@ function normalizePhoto({ sortOrder, sortDate, ...photo }) {
   return photo;
 }
 
+const VIDEOS_QUERY = `*[_type == "video"] | order(coalesce(order, 9999) asc, _createdAt desc) {
+  _id,
+  title,
+  vimeoUrl,
+  caption
+}`;
+
+export async function fetchVideos() {
+  if (!isSanityConfigured) {
+    return [];
+  }
+
+  return client.fetch(VIDEOS_QUERY);
+}
+
 export async function fetchPhotos() {
   if (!isSanityConfigured) {
     return [];
