@@ -775,6 +775,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import PortfolioPage from './PortfolioPage';
 import { fetchPhotos, fetchVideos } from '../portfolio/lib/sanity';
+import { fetchVimeoOembed } from '../portfolio/lib/vimeo';
 
 jest.mock('../portfolio/lib/sanity');
 jest.mock('../portfolio/lib/vimeo');
@@ -808,6 +809,14 @@ test('switching to the Videos tab loads and shows videos', async () => {
   fetchVideos.mockResolvedValue([
     { _id: 'v1', title: 'Reel', vimeoUrl: 'https://vimeo.com/1', caption: '' },
   ]);
+  // VideoGrid renders a real VideoTile for this video, which calls
+  // fetchVimeoOembed — without a resolved value here it stays an
+  // auto-mocked jest.fn() returning undefined, and VideoTile's
+  // `.then()` on that throws and crashes the tree.
+  fetchVimeoOembed.mockResolvedValue({
+    thumbnail_url: 'https://i.vimeocdn.com/thumb.jpg',
+    html: '<iframe title="Reel"></iframe>',
+  });
 
   renderPage();
 
